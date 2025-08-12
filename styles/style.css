@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw;
+    height: 70vh;
+    border: 1px solid black;
+    padding: 10px 0px;
+}
+
+.hidden {
+    display: none;
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#options-container > button {
+    margin: 4px;
+}
+
+#question-container {
+    padding: 10px;
+}
