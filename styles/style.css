@@ -38,3 +38,11 @@ main {
 #question-container {
     padding: 10px;
 }
+
+.right {
+    background-color: green;
+}
+
+.wrong {
+    background-color: red;
+}
