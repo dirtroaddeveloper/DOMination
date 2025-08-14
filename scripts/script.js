@@ -44,7 +44,7 @@ function loadQuestion(currentQuestion) {
             const optionButton = document.createElement('button');
             optionButton.textContent = option;
             optionButton.setAttribute("class", "btn");
-            optionButton.addEventListener('click', () => selectOption(currentQuestion, index));
+            optionButton.addEventListener('click', (event) => selectOption(currentQuestion, index, event));
             optionsContainer.appendChild(optionButton);
         });
 
@@ -72,15 +72,18 @@ function restartGame() {
 
 }
 
-function selectOption(question, index) {
-    console.log(question)
+function selectOption(question, index, event) {
+    const options = document.querySelectorAll(".btn");
+    
     if(question.answer == index) {
         quizData[1].score += 1;
-        
+        console.log(question.answer)
+        event.target.style.backgroundColor = "green";
         nextButtonHandler();
         disableAll();
     } else {
-        console.log("Wrong")
+        options[question.answer].style.backgroundColor = "green";
+        event.target.style.backgroundColor = "red";
         nextButtonHandler();
         disableAll();
     }
@@ -123,9 +126,11 @@ function playGame() {
         if(index < quizData[0].length) {
             index += 1;
             loadQuestion(quizData[0][index]);
+            console.log(index + " and fucking " + quizData[0].length)
         } else if(index == quizData[0].length) {
             optionsContainer.textContent = "GAME OVER"
-            return;
+            console.log("wtf")
+            
         }
         console.log(index + " and " + quizData[0].length)
     });
