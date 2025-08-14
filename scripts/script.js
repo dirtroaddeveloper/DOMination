@@ -8,7 +8,7 @@ const quizData = [
             
         },
         {
-            question: "Is Js great?",
+            question: "What ?",
             options: ["yes()", "no()", "maybe()", "wtf()"],
             answer: 1
         },
@@ -29,7 +29,7 @@ const quizData = [
 
 ]
 
-
+// Loads the question into the DOM
 function loadQuestion(currentQuestion) {
     const nextBtn = document.getElementById("next-button");
     nextBtn.disabled = true
@@ -37,6 +37,7 @@ function loadQuestion(currentQuestion) {
     const optionsContainer = document.getElementById("options-container");
     const questionContainer = document.getElementById("question-container");
 
+    // Checks to make sure the current question exists
     if(currentQuestion) {
 
         questionContainer.textContent = currentQuestion.question;
@@ -48,16 +49,17 @@ function loadQuestion(currentQuestion) {
             optionsContainer.appendChild(optionButton);
         });
 
+    // If the current question does not exist, it calls the restart game method
     } else {
 
         restartGame();
     }
     
     
-
-
 }
 
+
+// Restart the game method reloads the page to start over and clear data
 function restartGame() {
     const quizMain = document.querySelector(".quiz");
     const scoreContainer = document.getElementById("score-container");
@@ -72,6 +74,7 @@ function restartGame() {
 
 }
 
+// Selects the option and checks to see if it was correct or incorrect
 function selectOption(question, index, event) {
     const options = document.querySelectorAll(".btn");
     
@@ -90,13 +93,7 @@ function selectOption(question, index, event) {
     
 }
 
-function colorButton() {
-
-}
-
-
-
-
+// Disables all of the options once an option is selected
 function disableAll() {
     let optionButtons = document.querySelectorAll(".btn");
     
@@ -104,17 +101,17 @@ function disableAll() {
             
             button.disabled = true;
             
-            
-        
     });
 }
 
+// Handles the check whether the next button is disabled or not
 function nextButtonHandler() {
     const nextBtn = document.getElementById("next-button");
     
     nextBtn.disabled = true ? nextBtn.disabled = false : nextBtn.disabled = true;
 }
 
+// The playgame function that calls the correct functions to run the game
 function playGame() {
     const nextBtn = document.getElementById("next-button");
     let index = 0;
@@ -137,5 +134,5 @@ function playGame() {
 
 }
 
-
+// Calls the playgame function
 playGame();
